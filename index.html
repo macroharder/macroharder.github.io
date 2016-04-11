@@ -583,7 +583,7 @@
 <li>回到<em>NewAndroidModule</em> 目录，用编辑器打开<em>recipe.xml.ftl</em>文件</li>
 <li>加入以下配置</li>
 </ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable3.png" alt=""></center>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable3.png" alt=""></center>  
 
 <p><strong>配置方法2</strong></p>
 <ul>
@@ -601,6 +601,13 @@
 <li>在<em>.gitignore</em> 文件中生成自定义忽略配置</li>
 <li>等等…</li>
 </ul>
+<h3 id="活动模板"><a href="#活动模板" class="headerlink" title="活动模板"></a>活动模板</h3><p><em>Android Studio</em> 中默认提供了很多非常方便的活动模板(<em>Live Templates</em>)，例如，我们输入<em>sout</em> 后按<em>enter</em> 键，<em>Android Studio</em> 会自动帮我们写入<em>System.out.println();</em> </p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/sout.gif" alt=""></center>
+
+<p>其实<em>sout</em> 就是AS自带的一个活动模板。</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/temp.png" alt=""></center><br>由此可以看出，活动模板就是我们常用代码的一个<strong>缩写</strong>。开发中有很多代码都会重复出现，因此自定义合适的活动模板能很大程度上避免我们很多重复的体力劳动。那么问题来了，如何自定义？<br>这里我们以<em>Handler</em> 为例。在<em>Activity</em> 中一个合格的<em>Handler</em> 改有的样子是这样的：<br><br>    private static class MyHandler extends Handler {<br>        private WeakReference<mainactivity> activityWeakReference;<br><br>        public MyHandler(MainActivity activity) {<br>            activityWeakReference = new WeakReference<mainactivity>(activity);<br>        }<br><br>        @Override<br>        public void handleMessage(Message msg) {<br>            MainActivity activity = activityWeakReference.get();<br>            if (activity != null) {<br><br>            }<br>        }<br>    }<br><br>至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个<em>‘psh’</em> 就自动出现上面这段代码的话，我应该这么做：<br><strong>配置方法</strong><br><br>+ <em>File</em> | <em>Settings</em> 打开设置<br>+ 选择<em>Editor</em> | <em>Code Style</em> | <em>Live Templates</em><br>+ 点击最右侧的‘+’号并选择<em>Template Group…</em>在弹出的对话框中输入一个活动模板分组的名称，如我输入了<em>“custom”</em> 表示这个分组下的所有模板都是我自定义的。<br>+ 在左侧选中上一步中创建的<em>custom</em> 分组，点击右边的‘+’号，选择<em>Live Template</em> ，在<em>Abbreviation</em> 中对输入我想要的<em>“psh”</em> ，在<em>Description</em> 随便这个活动模板的描述<br>+ 在<em>Template text</em> 中输入以下代码<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static class MyHandler extends Handler&#123;</span><br><span class="line">    private WeakReference&lt;$className$&gt; activityWeakReference;</span><br><span class="line">    public MyHandler($className$ activity)&#123;</span><br><span class="line">        activityWeakReference = new WeakReference&lt;$className$&gt;(activity);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void handleMessage(Message msg)&#123;</span><br><span class="line">        $className$ activity = activityWeakReference.get();</span><br><span class="line">        if (activity != null)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>+ 点击下方的<em>Define</em> 按钮，选中<em>java</em> 表示这个模板用于java代码<br>+ 点击右侧的<em>Edit variables</em> ，在弹出的对话框中<em>Expression</em> 下面的下拉框中选择<em>className()</em> 并勾选后面的<em>Skip if…</em>,这个操作的作用是，AS会自动将我们在上一步中用’$’符包裹的<em>className</em>自动替换为当前类不含包名的类名<br>+ 点击<em>Apply</em> 和<em>Ok</em> 让设置生效。至此，一个我们自定义的<em>custom</em> 模板组中的<em>psh</em> 活动模板就定义完成了。<br><br>下面我们来验证一下，见证奇迹的时候到了：<br><br><center><img src="http://7xkou8.com1.z0.glb.clouddn.com/handler.gif" alt=""></center>
+
+
 <h3 id="后面的话"><a href="#后面的话" class="headerlink" title="后面的话"></a>后面的话</h3><ol>
 <li>由于互联网数据的分享性，如果本文部分内容来源于您的原创文章，且我没有注明(我相信本文中没有)，请<a href="http://weibo.com/u/3219033010/home?topnav=1&amp;wvr=6" target="_blank" rel="external">微博私信</a>说明。</li>
 <li>欢迎转载，但最好请注明文章原始出处。</li>
@@ -612,7 +619,7 @@
 
 <p>想啥呢你们，全都是套路！</p>
 <p>作者：liukun<br>出处：<a href="http://liukun.engineer" target="_blank" rel="external">http://liukun.engineer</a></p>
-
+</mainactivity></mainactivity>
           
         
       
