@@ -439,7 +439,9 @@
 <p>我的建议：即时的备份你的设置文件到云盘等地方。</p>
 </blockquote>
 <p>当我在配置我的<em>Android Studio</em> 的时候，下面的一些配置或许对你有一定的帮助。</p>
-<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的<em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个事情为毛不是默认开启的？!(四个字:妈的智障)</p>
+<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的<em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个事情为毛不是默认开启的？!对此我只想说四个字：</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center>
+
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/showline.png" alt=""></center><br><center><font size="0.5">未显示行号</font></center>
 
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/line%20nu.png" alt=""></center><br><center><font size="0.5">显示行号</font></center>
@@ -472,7 +474,7 @@
 <li>选择<em>Editor</em> | <em>General</em> </li>
 <li>取消选中<em>‘Honor Camel Humps words settings when selecting on double click’</em></li>
 </ul>
-<h3 id="字段名前缀"><a href="#字段名前缀" class="headerlink" title="字段名前缀"></a>字段名前缀</h3><p>我们通常会遵循<em>Android</em> 官方关于编码风格的指导来进行字段命名。在<em>Android</em> 源码中我们可以看到通常成员变量都是以‘m’开始。其实<em>Android Studio</em> 可以自动在帮我们生成字段名称的时候加上自定义的前缀，如:</p>
+<h3 id="命名前缀"><a href="#命名前缀" class="headerlink" title="命名前缀"></a>命名前缀</h3><p>我们通常会遵循<em>Android</em> 官方关于编码风格的指导来进行字段命名。在<em>Android</em> 源码中我们可以看到通常成员变量都是以‘m’开始。其实<em>Android Studio</em> 可以自动在帮我们生成字段名称的时候加上自定义的前缀，如:</p>
 <ul>
 <li>非共有，非静态的成员变量以’m’开始</li>
 <li>静态成员变量以’s’开始</li>
@@ -486,15 +488,70 @@
 <li>选择<em>Code Generation</em> 标签</li>
 <li>给普通<em>Field</em> 添加一个’m’前缀，给<em>Static filed</em> 添加一个’s’前缀</li>
 </ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/filed2.png" alt=""></center><br><center><font size="0.5">设置</font></center>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/filed2.png" alt=""></center><br><center><font size="0.5">设置</font></center> 
 
+<h3 id="自动快速导包"><a href="#自动快速导包" class="headerlink" title="自动快速导包"></a>自动快速导包</h3><p>在<em>Android Studio</em> 中，我们可以通过<em>Alt + Enter</em>和<em>Control + Alt + O</em>进行导包和清除无用导包，但我们都生活在2006年了，这些事情应当快速自动完成。 </p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import1.gif" alt=""></center><br><center><font size="0.5">未开启imports on the fly<br></font></center>  
 
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import2.gif" alt=""></center><br><center><font size="0.5">开启imports on the fly<br></font></center> 
 
+<p>配置方法</p>
+<ul>
+<li><em>File</em> | <em>Settings</em> 打开设置</li>
+<li>选择<em>Editor</em> | <em>General</em> | <em>Auto Import</em></li>
+<li>勾选<em>Optimize imports on the fly</em></li>
+<li>勾选<em>Add unambiguous imports on the fly</em> </li>
+</ul>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import3.png" alt=""></center><br><center><font size="0.5">设置</font></center> 
 
+<h3 id="自定义Log颜色"><a href="#自定义Log颜色" class="headerlink" title="自定义Log颜色"></a>自定义Log颜色</h3><p><em>Darcula</em> 主题中<em>Logcat</em> 的默认配色只有红白两种颜色，不太便于我们区分Log的类型。</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/log1.png" alt=""></center><br><center><font size="0.5">Darcula 主题配色</font></center> 
 
+<p>我建议大家采用之前<em>Android Holo</em> 主题那种鲜明的配色</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/log2.png" alt=""></center><br><center><font size="0.5">Holo 主题配色</font></center> 
 
-
-
+<p>配置方法</p>
+<ul>
+<li><em>File</em> | <em>Settings</em> 打开设置</li>
+<li>选择<em>Editor</em> | <em>Color &amp; Fonts</em> | <em>Android Logcat</em></li>
+<li>点击<em>Click on Save As…</em>按钮创建一个新的配色纲要</li>
+<li>按照下面的表格修改对应的颜色(<em>修改之前需要取消勾选Use inherited attributes</em>)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Log级别</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assert:</td>
+<td>#AA66CC</td>
+</tr>
+<tr>
+<td>Debug:</td>
+<td>#33B5E5</td>
+</tr>
+<tr>
+<td>Error:</td>
+<td>#FF4444</td>
+</tr>
+<tr>
+<td>Info:</td>
+<td>#99CC00</td>
+</tr>
+<tr>
+<td>Verbose:</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Warning:</td>
+<td>#FFBB33</td>
+</tr>
+</tbody>
+</table>
+<h2 id="华丽的分割线"><a href="#华丽的分割线" class="headerlink" title="华丽的分割线"></a><center><font size="0.1">华丽的分割线</font></center></h2>
           
         
       
