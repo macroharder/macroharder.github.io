@@ -608,11 +608,35 @@
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/temp.png" alt=""></center>  
 
 <p>由此可以看出，活动模板就是我们常用代码的一个<strong>缩写</strong>。开发中有很多代码都会重复出现，因此自定义合适的活动模板能很大程度上避免我们很多重复的体力劳动。那么问题来了，如何自定义？<br>这里我们以<em>Handler</em> 为例。下面是在<em>Activity</em> 中一个合格的<em>Handler</em> 该有的样子： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">private static class MyHandler extends Handler &#123;</span><br><span class="line">        private WeakReference&lt;MainActivity&gt; activityWeakReference;</span><br><span class="line"></span><br><span class="line">        public MyHandler(MainActivity activity) &#123;</span><br><span class="line">            activityWeakReference = new WeakReference&lt;MainActivity&gt;(activity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void handleMessage(Message msg) &#123;</span><br><span class="line">            MainActivity activity = activityWeakReference.get();</span><br><span class="line">            if (activity != null) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个*‘psh’* 就自动出现上面这段代码的话，我应该这么做： </span><br><span class="line"></span><br><span class="line">**配置方法**  </span><br><span class="line"></span><br><span class="line">+ *File* | *Settings* 打开设置</span><br><span class="line">+ 选择*Editor* | *Code Style* | *Live Templates*</span><br><span class="line">+ 点击最右侧的加号并选择*Template Group*</span><br><span class="line">+ 在弹出的对话框中输入一个活动模板分组的名称，如*custom*</span><br><span class="line">+ 在左侧选中上一步中创建的*custom* 分组，点击右边的加号</span><br><span class="line">+ 选择*Live Template* ，在*Abbreviation* 中对输入*psh* </span><br><span class="line">+ 在*Description* 中输入这个活动模板的描述</span><br><span class="line">+ 在*Template text* 中输入以下代码</span><br></pre></td></tr></table></figure>
-<p>private static class MyHandler extends Handler{<br>    private WeakReference&lt;$className$&gt; activityWeakReference;<br>    public MyHandler($className$ activity){<br>        activityWeakReference = new WeakReference&lt;$className$&gt;(activity);<br>    }<br>    @Override<br>    public void handleMessage(Message msg){<br>        $className$ activity = activityWeakReference.get();<br>        if (activity != null){</p>
-<pre><code>    }
-}
-</code></pre><p>}<br>```</p>
+<pre><code>private static class MyHandler extends Handler {
+        private WeakReference&lt;MainActivity&gt; activityWeakReference;
+
+        public MyHandler(MainActivity activity) {
+            activityWeakReference = new WeakReference&lt;MainActivity&gt;(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            MainActivity activity = activityWeakReference.get();
+            if (activity != null) {
+
+            }
+        }
+    }
+</code></pre><p>至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个<em>‘psh’</em> 就自动出现上面这段代码的话，我应该这么做： </p>
+<p><strong>配置方法</strong>  </p>
+<ul>
+<li><em>File</em> | <em>Settings</em> 打开设置</li>
+<li>选择<em>Editor</em> | <em>Code Style</em> | <em>Live Templates</em></li>
+<li>点击最右侧的加号并选择<em>Template Group</em></li>
+<li>在弹出的对话框中输入一个活动模板分组的名称，如<em>custom</em></li>
+<li>在左侧选中上一步中创建的<em>custom</em> 分组，点击右边的加号</li>
+<li>选择<em>Live Template</em> ，在<em>Abbreviation</em> 中对输入<em>psh</em> </li>
+<li>在<em>Description</em> 中输入这个活动模板的描述</li>
+<li>在<em>Template text</em> 中输入以下代码</li>
+</ul>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/hand.png" alt=""></center>
+
 <ul>
 <li>点击下方的<em>Define</em> 按钮，选中<em>java</em> 表示这个模板用于java代码</li>
 <li>点击右侧的<em>Edit variables</em></li>
