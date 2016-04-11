@@ -432,21 +432,21 @@
         
           
             <blockquote>
-<p>本文主要内容来自Dmytro Danylyk 在Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh" target="_blank" rel="external">Configuring Android Studio</a>。在此感谢！在翻译原文的基础上作了少量的补充，若有新的发现会即时更新。</p>
+<p>本文主要内容来自Dmytro Danylyk 在Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh" target="_blank" rel="external">Configuring Android Studio</a>。在此感谢！在翻译原文的基础上作了一些补充，若有新的发现会即时更新。</p>
 </blockquote>
-<h3 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h3><p><em>Android Studio</em> 提供了一个非常方便的功能帮助我们<em>导入</em>或者<em>导出</em>设置。因此我们在安装一个新的<em>Android Studio</em> 的时候通常会导入一个之前的设置。但是，最近发生了一件操蛋的事情-我丢失了我的设置文件(幸灾乐祸点个赞—&gt;_—&gt;)。</p>
+<h3 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h3><p><em>Android Studio</em> 提供了一个非常方便的功能帮助我们<em>导入</em>或者<em>导出</em>设置。因此我们在安装一个新的<em>Android Studio</em> 的时候通常会导入一个之前的设置。但是，最近发生了一件操蛋的事情-我丢失了我的设置文件(幸灾乐祸点个赞～)。</p>
 <blockquote>
 <p>我的建议：即时的备份你的设置文件到云盘等地方。</p>
 </blockquote>
 <p>当我在配置我的<em>Android Studio</em> 的时候，下面的一些配置或许对你有一定的帮助。</p>
-<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的<em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个事情为毛不是默认开启的？!对此我只想说四个字：</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center>
+<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的<em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个基本的配置为毛不是默认开启的？!对此我只想说四个字：</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center> 
 
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/showline.png" alt=""></center><br><center><font size="0.5">未显示行号</font></center>
 
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/line%20nu.png" alt=""></center><br><center><font size="0.5">显示行号</font></center>
 
-<p>配置方法</p>
+<p>配置方法 </p>
 <ul>
 <li><em>File</em> | <em>Settings</em> 打开设置</li>
 <li>选择<em>Editor</em> | <em>General</em> | <em>Appearance</em></li>
@@ -514,7 +514,7 @@
 <ul>
 <li><em>File</em> | <em>Settings</em> 打开设置</li>
 <li>选择<em>Editor</em> | <em>Color &amp; Fonts</em> | <em>Android Logcat</em></li>
-<li>点击<em>Click on Save As…</em>按钮创建一个新的配色纲要</li>
+<li>点击<em>Click on Save As…</em>按钮创建一个新的配色<em>Scheme</em></li>
 <li>按照下面的表格修改对应的颜色(<em>修改之前需要取消勾选Use inherited attributes</em>)</li>
 </ul>
 <table>
@@ -551,7 +551,48 @@
 </tr>
 </tbody>
 </table>
-<h2 id="华丽的分割线"><a href="#华丽的分割线" class="headerlink" title="华丽的分割线"></a><center><font size="0.1">华丽的分割线</font></center></h2>
+<hr>
+<center><font size="0.5">苍老师的事业线</font></center><br><em>**<br><br>下面是个人的一些补充：<br><br>### 修改代码配色
+
+</em>Android Studio* 中默认的代码配色个人感觉已经很和谐，但这个东西仁者见仁。比如有的朋友会觉得java 代码中局部变量的默认的白色不太便于快速与其它代码进行区分，这时候就需要自定义java 代码颜色，这里就一局部变量为例。<br><br><center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color1.png" alt=""></center><br><center><font size="0.5">默认配色</font></center>
+
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color2.png" alt=""></center><br><center><font size="0.5">自定义配色</font></center>
+
+<p>配置方法</p>
+<ul>
+<li><em>File</em> | <em>Settings</em> 打开设置</li>
+<li>选择<em>Editor</em> | <em>Color &amp; Fonts</em> | <em>Java</em></li>
+<li>点击<em>Click on Save As…</em>按钮创建一个新的配色<em>Scheme</em></li>
+<li>展开下方的<em>Variables</em> 选择<em>Local variable</em></li>
+<li>设置右侧的<em>Foreground</em> 颜色</li>
+</ul>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color3.png" alt=""></center><br><center><font size="0.5">设置</font></center>
+
+<h3 id="自定义工程模板"><a href="#自定义工程模板" class="headerlink" title="自定义工程模板"></a>自定义工程模板</h3><p><em>Android Studio</em> 创建<em>Module</em> 时并没有将<em>Android</em> 开发中常用的文件目录全部生成，比如默认只生成了一个<em>drawable</em>文件夹，常用的<em>drawable-hdpi</em> 等文件夹需要我们自己创建。正如前文的作者所言，这都2016年了，这些事情应该自动完成！</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable1.png" alt=""></center><br><center><font size="0.5">默认结构</font></center>
+
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable2.png" alt=""></center><br><center><font size="0.5">自定义结构</font></center>
+
+<p>配置方法1</p>
+<ul>
+<li>进入<em>Android Studio</em> 安装目录</li>
+<li>依次进入<em>plugins</em> | <em>android</em> | <em>lib</em> | <em>templates</em> | <em>gradle-projects</em> | <em>NewAndroidModule</em> | <em>root</em> | <em>res</em></li>
+<li>在res文件夹下创建<em>drawable-hdpi</em> 等文件夹(可选：从对应的mipmap文件夹中拷贝<em>iclauncher.png</em>到创建的<em>drawable</em>文件夹中)</li>
+<li>回到<em>NewAndroidModule</em> 目录，用编辑器打开<em>recipe.xml.ftl</em>文件</li>
+<li>加入以下配置</li>
+</ul>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable3.png" alt=""></center>
+
+<p>配置方法2</p>
+<ul>
+<li>进入<em>Android Studio</em> 安装目录</li>
+<li>依次进入<em>plugins</em> | <em>android</em> | <em>lib</em> | <em>templates</em> | <em>gradle-projects</em> | <em>NewAndroidModule</em></li>
+<li>用编辑器打开<em>recipe.xml.ftl</em>文件，并加入以下配置</li>
+</ul>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable4.png" alt=""></center>
+
+<p>这两种方法的区别是，第一种方式可以在文件夹中加入相应的图片，但是配置稍显繁琐，第二种方式配置简单，但是不能包含图片。</p>
+
           
         
       
