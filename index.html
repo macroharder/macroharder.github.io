@@ -274,6 +274,8 @@
         
           <blockquote>
 <p>最近有人问到能否根据不同渠道动态修改 <em>strings.xml</em> 中字符串问题，正好整理下 <em>gradle</em> 中几个比较灵活且非常实用的配置。</p>
+</blockquote>
+<h3 id="动态赋值resValue"><a href="#动态赋值resValue" class="headerlink" title="动态赋值resValue"></a>动态赋值resValue</h3><p>假如我们需要根据不同编译类型 <em>(debug/release)</em>或者不同渠道动态给 <code>strings.xml</code> 文件中的「url」赋值。只需要在「buildType」节点中根据不同的类型，或者「productFlavors」中根据不同的渠道加入一下代码：</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/13/Android-gradle-tips/#more" rel="contents">
               阅读全文 &raquo;
@@ -481,6 +483,16 @@
 <p>本文主要内容来自 Dmytro Danylyk 在 Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh">Configuring Android Studio</a>。在此感谢！虽然使用<em>Android Studio</em> 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新。希望对大家尤其是刚接触 <em>Android Studio</em> 的朋友有一点帮助。</p>
 </blockquote>
 <h3 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h3><p><em>Android Studio</em> 提供了一个非常方便的功能帮助我们<em>导入</em>或者<em>导出</em>设置。因此我们在安装一个新的 <em>Android Studio</em> 的时候通常会导入一个之前的设置。但是，最近发生了一件操蛋的事情-我丢失了我的设置文件(幸灾乐祸点个赞～)。</p>
+<blockquote>
+<p>我的建议：即时的备份你的设置文件到云盘等地方。</p>
+</blockquote>
+<p>当我在配置我的 <em>Android Studio</em> 的时候，下面的一些配置或许对你有一定的帮助。</p>
+<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的 <em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个基本的配置为毛不是默认开启的？!<br>对此我只想说四个字：</p>
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center> 
+
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/showline.png" alt=""></center><br><center><font size="0.5">未显示行号</font></center>
+
+<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/line%20nu.png" alt=""></center><br><center><font size="0.5">显示行号</font></center>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/10/Android-Studio-advanced-configuration/#more" rel="contents">
               阅读全文 &raquo;
