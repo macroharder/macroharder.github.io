@@ -369,9 +369,8 @@
 
       
         
-          
-            <blockquote>
-<p>PS:本文类容来自我在知乎上对<a href="https://www.zhihu.com/question/33636939/answer/57239990?group_id=612750833369153536" target="_blank" rel="external">Android开发中，有哪些让你觉得相见恨晚的方法、类或接口？</a>这一问题的回答，目前就总结这些，日后若有新的发现，随时补充。欢淫点赞。</p>
+          <blockquote>
+<p>PS:本文类容来自我在知乎上对<a href="https://www.zhihu.com/question/33636939/answer/57239990?group_id=612750833369153536">Android开发中，有哪些让你觉得相见恨晚的方法、类或接口？</a>这一问题的回答，目前就总结这些，日后若有新的发现，随时补充。欢淫点赞。 </p>
 </blockquote>
 <ul>
 <li><p>getParent().requestDisallowInterceptTouchEvent(true);剥夺父view 对touch 事件的处理权，谁用谁知道。</p>
@@ -382,61 +381,12 @@
 </li>
 <li><p>Bitmap.extractAlpha ();返回一个新的Bitmap，capture原始图片的alpha 值。有的时候我们需要动态的修改一个元素的背景图片又不希望使用多张图片的时候，通过这个方法，结合Canvas 和Paint 可以动态的修改一个纯色Bitmap的颜色。</p>
 </li>
-<li><p>HandlerThread，代替不停new Thread 开子线程的重复体力写法。</p>
-</li>
-<li><p>IntentService,一个可以干完活后自己去死且不需要我们去管理子线程的Service。</p>
-</li>
-<li><p>Palette，5.0加入的可以提取一个Bitmap 中突出颜色的类，结合上面的Bitmap.extractAlpha，你懂的。</p>
-</li>
-<li><p>Executors. newSingleThreadExecutor();这个是java 的，之前不知道它，自己花很大功夫去研究了单线程顺序执行的任务队列。。</p>
-</li>
-<li><p>android:animateLayoutChanges=”true”，LinearLayout中添加View 的动画的办法，支持通过setLayoutTransition()自定义动画。</p>
-</li>
-<li><p>ViewDragHelper，自定义一个子View可拖拽的ViewGroup 时，处理各种事件很累吧，嗯? what the fuck!!</p>
-</li>
-<li><p>GradientDrawable，之前接手公司的项目，发现有个阴影效果还不错，以为是切的图片，一看代码，什么鬼= =！</p>
-</li>
-<li><p>AsyncQueryHandler，如果做系统工具类的开发，比如联系人短信辅助工具等，肯定免不了和ContentProvider打交道，如果数据量不是很大的情况下，随便搞，如果数据量大的情况下，了解下这个类是很有必要的，需要注意的是，这玩意儿吃异常..</p>
-</li>
-<li><p>ViewFlipper，实现多个view的切换(循环)，可自定义动画效果，且可针对单个切换指定动画。</p>
-</li>
-<li><p>有朋友提到了在自定义View时有些方法在开启硬件加速的时候没有效果的问题，在API16之后确实有很多方法不支持硬件加速，通常我们关闭硬件加速都是在清单文件中通过，其实android也提供了针对特定View关闭硬件加速的方法,调用View.setLayerType(View.LAYER_TYPE_SOFTWARE, null);即可。</p>
-</li>
-<li><p>android util包中的Pair类，可以方便的用来存储一”组”数据。注意不是key value。</p>
-</li>
-<li><p>PointF，graphics包中的一个类，我们经常见到在处理Touch事件的时候分别定义一个downX，一个downY用来存储一个坐标，如果坐标少还好，如果要记录的坐标过多那代码就不好看了。用PointF(float x, float y);来描述一个坐标点会清楚很多。</p>
-</li>
-<li><p>StateListDrawable，定义Selector通常的办法都是xml文件，但是有的时候我们的图片资源可能是从服务器动态获取的，比如很多app所谓的皮肤，这种时候就只能通StateListDrawable<br>来完成了，各种addState即可。</p>
-</li>
-<li><p>android:descendantFocusability，ListView的item中CheckBox等元素抢焦点导致item点击事件无法响应时，除了给对应的元素设置 focusable,更简单的是在item根布局加上android:descendantFocusability=”blocksDescendants”</p>
-</li>
-<li><p>android:duplicateParentState=”true”，让子View跟随其Parent的状态，如pressed等。常见的使用场景是某些时候一个按钮很小，我们想要扩大其点击区域的时候通常会再给其包裹一层布局，将点击事件写到Parent上，这时候如果希望被包裹按钮的点击效果对应的Selector继续生效的话，这时候duplicateParentState就派上用场了。</p>
-</li>
-<li><p>includeFontPadding=”false”，TextView默认上下是有一定的padding的，有时候我们可能不需要上下这部分留白，加上它即可。</p>
-</li>
-<li><p>Messenger，面试的时候通常都会被问到进程间通信，一般情况下大家都是开始背书，AIDL巴拉巴拉。。有一天在鸿神的博客看到这个，嗯，如他所说，又可以装一下了。</p>
-</li>
-<li><p>TextView.setError();用于验证用户输入。</p>
-</li>
-<li><p>ViewConfiguration.getScaledTouchSlop();触发移动事件的最小距离，自定义View处理touch事件的时候，有的时候需要判断用户是否真的存在movie，系统提供了这样的方法。</p>
-</li>
-<li><p>ValueAnimator.reverse(); 顺畅的取消动画效果。</p>
-</li>
-<li><p>ViewStub，有的时候一块区域需要根据情况显示不同的布局，通常我们都会通过setVisibility的方法来显示和隐藏不同的布局，但是这样默认是全部加载的，用ViewStub可以更好的提升性能。</p>
-</li>
-<li><p>onTrimMemory，在Activity中重写此方法，会在内存紧张的时候回调（支持多个级别），便于我们主动的进行资源释放，避免OOM。</p>
-</li>
-<li><p>EditTxt.setImeOptions， 使用EditText弹出软键盘时，修改回车键的显示内容(一直很讨厌用回车键来交互，所以之前一直不知道这玩意儿)</p>
-</li>
-<li><p>TextView.setCompoundDrawablePadding，代码设置TextView的drawable padding。</p>
-</li>
-<li><p>ImageSwitcher，可以用来做图片切换的一个类，类似于幻灯片。</p>
-</li>
-<li><p>WeakHashMap，直接使用HashMap有时候会带来内存溢出的风险，使用WaekHashMap实例化Map。当使用者不再有对象引用的时候，WeakHashMap将自动被移除对应Key值的对象。 </p>
-</li>
 </ul>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/11/Android开发中，那些让你相见恨晚的方法、类或接口/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -527,240 +477,15 @@
 
       
         
-          
-            <blockquote>
-<p>本文主要内容来自 Dmytro Danylyk 在 Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh" target="_blank" rel="external">Configuring Android Studio</a>。在此感谢！虽然使用<em>Android Studio</em> 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新。希望对大家尤其是刚接触 <em>Android Studio</em> 的朋友有一点帮助。</p>
+          <blockquote>
+<p>本文主要内容来自 Dmytro Danylyk 在 Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh">Configuring Android Studio</a>。在此感谢！虽然使用<em>Android Studio</em> 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新。希望对大家尤其是刚接触 <em>Android Studio</em> 的朋友有一点帮助。</p>
 </blockquote>
 <h3 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h3><p><em>Android Studio</em> 提供了一个非常方便的功能帮助我们<em>导入</em>或者<em>导出</em>设置。因此我们在安装一个新的 <em>Android Studio</em> 的时候通常会导入一个之前的设置。但是，最近发生了一件操蛋的事情-我丢失了我的设置文件(幸灾乐祸点个赞～)。</p>
-<blockquote>
-<p>我的建议：即时的备份你的设置文件到云盘等地方。</p>
-</blockquote>
-<p>当我在配置我的 <em>Android Studio</em> 的时候，下面的一些配置或许对你有一定的帮助。</p>
-<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的 <em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个基本的配置为毛不是默认开启的？!<br>对此我只想说四个字：</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center> 
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/showline.png" alt=""></center><br><center><font size="0.5">未显示行号</font></center>
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/line%20nu.png" alt=""></center><br><center><font size="0.5">显示行号</font></center>
-
-<p><strong>配置方法</strong> </p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>General</em> | <em>Appearance</em></li>
-<li>勾选 <em>Show line numbers</em></li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/linenumb3.png" alt=""></center><br><center><font size="0.5">设置</font></center>
-
-<p>ps:在编辑区域最左侧右键选中 <em>Show line numbers</em> 也可以让当前打开的文件显示行号，不过这是一个临时设置，当前文件关闭后便失效。</p>
-<h3 id="驼峰选择"><a href="#驼峰选择" class="headerlink" title="驼峰选择"></a>驼峰选择</h3><p><em>Android</em> 开发中，我们通常会使用<em>驼峰命名法</em>对变量进行命名，但是当我们通过 <em>Ctrl + Left</em> / <em>Right</em> 键改变字符选择区域的时候 <em>Android Studio</em> 默认不支持‘驼峰’单词的选择。</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/tuof1.gif" alt=""></center><br><center><font size="0.5">不支持驼峰选择</font></center>
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/tuof2.gif" alt=""></center><br><center><font size="0.5">支持驼峰选择</font></center>
-
-<p><strong>配置方法</strong></p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>General</em> | <em>Smart Keys</em></li>
-<li>选中 <em>Use “CamelHumps” words</em></li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/tuof3.png" alt=""></center><br><center><font size="0.5">设置</font></center>
-
-<p><strong>注意:</strong>如果你仍然希望当鼠标在单词上双击之后选中整个单词，需要作如下设置：</p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>General</em> </li>
-<li>取消选中 <em>‘Honor Camel Humps words settings when selecting on double click’</em></li>
-</ul>
-<h3 id="命名前缀"><a href="#命名前缀" class="headerlink" title="命名前缀"></a>命名前缀</h3><p>我们通常会遵循 <em>Android</em> 官方关于编码风格的指导来进行字段命名。在 <em>Android</em> 源码中我们可以看到通常成员变量都是以‘m’开始。其实<em>Android Studio</em> 可以自动在帮我们生成字段名称的时候加上自定义的前缀，如:</p>
-<ul>
-<li>非共有，非静态的成员变量以’m’开始</li>
-<li>静态成员变量以’s’开始</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/filed1.gif" alt=""></center><br><center><font size="0.5">命名前缀</font></center>
-
-<p><strong>配置方法</strong></p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>Code Style</em> | <em>Java</em></li>
-<li>选择 <em>Code Generation</em> 标签</li>
-<li>给普通 <em>Field</em> 添加一个’m’前缀，给 <em>Static filed</em> 添加一个’s’前缀</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/filed2.png" alt=""></center><br><center><font size="0.5">设置</font></center> 
-
-<h3 id="快速导包"><a href="#快速导包" class="headerlink" title="快速导包"></a>快速导包</h3><p>在 <em>Android Studio</em> 中，我们可以通过 <em>Alt + Enter</em> 和 <em>Control + Alt + O</em> 进行导包和清除无用导包，但我们都生活在2016年了，这些事情应当快速自动完成。 </p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import1.gif" alt=""></center><br><center><font size="0.5">未开启imports on the fly<br></font></center>  
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import2.gif" alt=""></center><br><center><font size="0.5">开启imports on the fly<br></font></center> 
-
-<p><strong>配置方法</strong></p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>General</em> | <em>Auto Import</em></li>
-<li>勾选 <em>Optimize imports on the fly</em></li>
-<li>勾选 <em>Add unambiguous imports on the fly</em> </li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/import3.png" alt=""></center><br><center><font size="0.5">设置</font></center> 
-
-<h3 id="Log-颜色"><a href="#Log-颜色" class="headerlink" title="Log 颜色"></a>Log 颜色</h3><p><em>Darcula</em> 主题中 <em>Logcat</em> 的默认配色只有红白两种颜色，不太便于我们区分 Log 的类型。</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/log1.png" alt=""></center><br><center><font size="0.5">Darcula 主题配色</font></center> 
-
-<p>我建议大家采用之前 <em>Android Holo</em> 主题那种鲜明的配色</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/log2.png" alt=""></center><br><center><font size="0.5">Holo 主题配色</font></center> 
-
-<p><strong>配置方法</strong></p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>Color &amp; Fonts</em> | <em>Android Logcat</em></li>
-<li>点击 <em>Click on Save As…</em>按钮创建一个新的配色 <em>Scheme</em></li>
-<li>按照下面的表格修改对应的颜色(<em>修改之前需要取消勾选 Use inherited attributes</em>)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Log级别</th>
-<th>颜色</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Assert:</td>
-<td>#AA66CC</td>
-</tr>
-<tr>
-<td>Debug:</td>
-<td>#33B5E5</td>
-</tr>
-<tr>
-<td>Error:</td>
-<td>#FF4444</td>
-</tr>
-<tr>
-<td>Info:</td>
-<td>#99CC00</td>
-</tr>
-<tr>
-<td>Verbose:</td>
-<td>#FFFFFF</td>
-</tr>
-<tr>
-<td>Warning:</td>
-<td>#FFBB33</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<center><font size="0.5">苍老师的事业线</font></center> 
-
-<p><strong>下面是个人的一些补充：</strong></p>
-<h3 id="代码配色"><a href="#代码配色" class="headerlink" title="代码配色"></a>代码配色</h3><p><em>Android Studio</em> 中默认的代码配色个人感觉已经很和谐，但这个东西仁者见仁。比如有的朋友会觉得java 代码中局部变量的默认的白色不太便于快速与其它代码进行区分，这时候就需要自定义 java 代码颜色，这里以局部变量为例。</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color1.png" alt=""></center><br><center><font size="0.5">默认配色</font></center>
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color2.png" alt=""></center><br><center><font size="0.5">自定义配色</font></center>
-
-<p><strong>配置方法</strong></p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>Color &amp; Fonts</em> | <em>Java</em></li>
-<li>点击 <em>Click on Save As…</em>按钮创建一个新的配色 <em>Scheme</em></li>
-<li>展开下方的 <em>Variables</em> 选择 <em>Local variable</em></li>
-<li>设置右侧的 <em>Foreground</em> 颜色</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/color3.png" alt=""></center><br><center><font size="0.5">设置</font></center>
-
-<h3 id="工程模板"><a href="#工程模板" class="headerlink" title="工程模板"></a>工程模板</h3><p><em>Android Studio</em> 创建 <em>Module</em> 时并没有将 <em>Android</em> 开发中常用的文件目录全部生成，比如默认只生成了一个 <em>drawable</em> 文件夹，常用的 <em>drawable-hdpi</em> 等文件夹需要我们自己创建。正如前文的作者所言，这都2016年了，这些事情应该自动完成，毕竟我们都很‘懒’！</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable1.png" alt=""></center><br><center><font size="0.5">默认结构</font></center>
-
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable2.png" alt=""></center><br><center><font size="0.5">自定义结构</font></center>
-
-<p><strong>配置方法1</strong></p>
-<ul>
-<li>进入 <em>Android Studio</em> 安装目录</li>
-<li>依次进入 <em>plugins</em> | <em>android</em> | <em>lib</em> | <em>templates</em> | <em>gradle-projects</em> | <em>NewAndroidModule</em> | <em>root</em> | <em>res</em></li>
-<li>在res文件夹下创建 <em>drawable-hdpi</em> 等文件夹(可选：从对应的 mipmap文件夹中拷贝 <em>iclauncher.png</em>到创建的 <em>drawable</em>文件夹中)</li>
-<li>回到 <em>NewAndroidModule</em> 目录，用编辑器打 <em>recipe.xml.ftl</em>文件</li>
-<li>加入以下配置</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable3.png" alt=""></center>
-
-<p><strong>配置方法2</strong></p>
-<ul>
-<li>进入 <em>Android Studio</em> 安装目录</li>
-<li>依次进入 <em>plugins</em> | <em>android</em> | <em>lib</em> | <em>templates</em> | <em>gradle-projects</em> | <em>NewAndroidModule</em></li>
-<li>用编辑器打开 <em>recipe.xml.ftl</em>文件，并加入以下配置</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/drawable4.png" alt=""></center>
-
-<p>这两种方法的区别是，第一种方式可以在文件夹中加入相应的图片，但是配置稍显繁琐，第二种方式配置简单，但是只能创建目录，不能包含默认图片。</p>
-<p>当然，通过类似的方式我们还可以在创建 <em>Module</em> 的时候做很多事情，比如：</p>
-<ul>
-<li>在 <em>colors.xml</em> 文件中生成常用颜色</li>
-<li>在 <em>build.gradle</em> 文件中生成自定义配置</li>
-<li>在 <em>.gitignore</em> 文件中生成自定义忽略配置</li>
-<li>等等…</li>
-</ul>
-<h3 id="活动模板"><a href="#活动模板" class="headerlink" title="活动模板"></a>活动模板</h3><p><em>Android Studio</em> 中默认提供了很多非常方便的活动模板(<em>Live Templates</em>)，例如，我们输入 <em>sout</em> 后按 <em>enter</em> 键， <em>Android Studio</em> 会自动帮我们写入 <em>System.out.println();</em> </p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/sout.gif" alt=""></center>
-
-<p>其实 <em>sout</em> 就是 AS 自带的一个活动模板。</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/temp.png" alt=""></center>  
-
-<p>由此可以看出，活动模板就是我们常用代码的一个<strong>缩写</strong>。开发中有很多代码都会重复出现，因此自定义合适的活动模板能很大程度上避免我们很多重复的体力劳动。那么问题来了，如何自定义？<br>这里我们以 <em>Handler</em> 为例。下面是在 <em>Activity</em> 中一个合格的 <em>Handler</em> 该有的样子： </p>
-<pre><code>private static class MyHandler extends Handler {
-        private WeakReference&lt;MainActivity&gt; activityWeakReference;
-
-        public MyHandler(MainActivity activity) {
-            activityWeakReference = new WeakReference&lt;MainActivity&gt;(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            MainActivity activity = activityWeakReference.get();
-            if (activity != null) {
-
-            }
-        }
-    }
-</code></pre><p>至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个<em>‘psh’</em> 就自动出现上面这段代码的话，我应该这么做： </p>
-<p><strong>配置方法</strong>  </p>
-<ul>
-<li><em>File</em> | <em>Settings</em> 打开设置</li>
-<li>选择 <em>Editor</em> | <em>Code Style</em> | <em>Live Templates</em></li>
-<li>点击最右侧的加号并选择 <em>Template Group</em></li>
-<li>在弹出的对话框中输入一个活动模板分组的名称，如 <em>custom</em></li>
-<li>在左侧选中上一步中创建的 <em>custom</em> 分组，点击右边的加号</li>
-<li>选择 <em>Live Template</em> ，在 <em>Abbreviation</em> 中对输入 <em>psh</em> </li>
-<li>在 <em>Description</em> 中输入这个活动模板的描述</li>
-<li>在 <em>Template text</em> 中输入以下代码</li>
-</ul>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/hand.png" alt=""></center>
-
-<ul>
-<li>点击下方的 <em>Define</em> 按钮，选中 <em>java</em> 表示这个模板用于java代码</li>
-<li>点击右侧的 <em>Edit variables</em></li>
-<li>选择 <em>Expression</em> 下拉框中的 <em>className</em> 并勾选 <em>Skip if…</em></li>
-</ul>
-<blockquote>
-<p>这个操作的作用是，AS会自动将我们在上一步中用’$’符包裹的 <em>className</em>自动替换为当前类不含包名的类名</p>
-</blockquote>
-<ul>
-<li>点击 <em>Apply</em> 和 <em>Ok</em> 让设置生效。  </li>
-</ul>
-<p>至此，一个我们自定义的 <em>custom</em> 模板组中的 <em>psh</em> 活动模板就定义完成了。下面我们来验证一下，见证奇迹的时候到了： </p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/handler.gif" alt=""></center>
-
-<h3 id="后面的话"><a href="#后面的话" class="headerlink" title="后面的话"></a>后面的话</h3><ol>
-<li>由于互联网数据的分享性，如果本文部分内容来源于您的原创文章，且我没有注明(我相信本文中没有)，请<a href="http://weibo.com/u/3219033010/home?topnav=1&amp;wvr=6" target="_blank" rel="external">微博私信</a>说明。</li>
-<li>欢迎转载，但最好请注明文章原始出处。</li>
-<li>身为一名老司机，没有福利不太合适。</li>
-<li><strong>如果你正在办公室，不建议你阅读以下内容。</strong></li>
-</ol>
-<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>     </p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/fu2.png" alt=""></center>
-
-<p>想啥呢你们，全都是套路！</p>
-<p>作者：liukun<br>出处：<a href="http://liukun.engineer" target="_blank" rel="external">http://liukun.engineer</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/10/Android-Studio-advanced-configuration/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
