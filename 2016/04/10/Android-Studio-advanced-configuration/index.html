@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://7xkou8.com1.z0.glb.clouddn.com/hand.png">
 <meta property="og:image" content="http://7xkou8.com1.z0.glb.clouddn.com/handler.gif">
 <meta property="og:image" content="http://7xkou8.com1.z0.glb.clouddn.com/fu2.png">
-<meta property="og:updated_time" content="2016-04-15T12:15:39.000Z">
+<meta property="og:updated_time" content="2016-04-15T12:17:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio advanced configuration">
 <meta name="twitter:description" content="本文主要内容来自 Dmytro Danylyk 在 Medium 的文章Configuring Android Studio。在此感谢！虽然使用Android Studio 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新。当然，原文中个别技巧也谈不上高级，出于对作者的尊重，仍然全部翻译了过来，希望对大家尤其是刚接触 A">
@@ -473,22 +473,23 @@
 <center><img src="http://7xkou8.com1.z0.glb.clouddn.com/temp.png" alt=""></center>  
 
 <p>由此可以看出，活动模板就是我们常用代码的一个<strong>缩写</strong>。开发中有很多代码都会重复出现，因此自定义合适的活动模板能很大程度上避免我们很多重复的体力劳动。那么问题来了，如何自定义？<br>这里我们以 <em>Handler</em> 为例。下面是在 <em>Activity</em> 中一个合格的 <em>Handler</em> 该有的样子： </p>
-<pre><code>private static class MyHandler extends Handler {
-        private WeakReference&lt;MainActivity&gt; activityWeakReference;
+<pre><code class="java"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>{
+        <span class="keyword">private</span> WeakReference&lt;MainActivity&gt; activityWeakReference;
 
-        public MyHandler(MainActivity activity) {
-            activityWeakReference = new WeakReference&lt;MainActivity&gt;(activity);
+        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(MainActivity activity)</span> </span>{
+            activityWeakReference = <span class="keyword">new</span> WeakReference&lt;MainActivity&gt;(activity);
         }
 
-        @Override
-        public void handleMessage(Message msg) {
+        <span class="meta">@Override</span>
+        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>{
             MainActivity activity = activityWeakReference.get();
-            if (activity != null) {
+            <span class="keyword">if</span> (activity != <span class="keyword">null</span>) {
 
             }
         }
     }
-</code></pre><p>至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个<em>‘psh’</em> 就自动出现上面这段代码的话，我应该这么做： </p>
+</code></pre>
+<p>至于原因我就不再重复了，网上有太多的文章有讲过。现在如果我只希望输入一个<em>‘psh’</em> 就自动出现上面这段代码的话，我应该这么做： </p>
 <p><strong>配置方法</strong>  </p>
 <ul>
 <li><em>File</em> | <em>Settings</em> 打开设置</li>
