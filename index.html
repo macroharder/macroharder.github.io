@@ -289,11 +289,12 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>最小化所有窗口</td>
+<td>command + option + M + H</td>
 </tr>
 </tbody>
 </table>
-<p>最小化所有窗口|command + option + M + H<br>不带格式粘贴|command + option + shift + V<br>窗口截图带阴影|shift + command + 4 + 空格<br>切换并前置最小化的窗口 |command + tab 切换到对应的窗口后    command 键不要松，按下 option 键后再一起松<br>显示选中文件简介|command  + I<br>输入特殊符号 |control + command + space<br>音量轻微调节|option + shift + F10/F11<br>剪切|command + C   –&gt; command +option + V</p>
+<p>不带格式粘贴|command + option + shift + V|<br>|窗口截图带阴影|shift + command + 4 + 空格|<br>|切换并前置最小化的窗口 |command + tab 切换到对应的窗口后    command 键不要松，按下 option 键后再一起松|<br>|显示选中文件简介|command  + I|<br>|输入特殊符号 |control + command + space|<br>|音量轻微调节|option + shift + F10/F11|<br>|剪切|command + C   –&gt; command +option + V|</p>
 <h2 id="命令篇"><a href="#命令篇" class="headerlink" title="命令篇"></a>命令篇</h2><table>
 <thead>
 <tr>
@@ -303,11 +304,29 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>显示隐藏文件夹</td>
+<td>defaults write com.apple.finder</td>
+<td>AppleShowAllFiles -bool true;killall Finder</td>
+</tr>
+<tr>
+<td>隐藏隐藏文件夹</td>
+<td>defaults write com.apple.finder</td>
+<td>AppleShowAllFiles -bool false;killall Finder</td>
+</tr>
+<tr>
+<td>在终端中打开当前目录</td>
+<td>open .</td>
+</tr>
+<tr>
+<td>强制Safari在新建窗口中打开链接</td>
+<td>defaults write com.apple.Safari TargetedClicksCreateTabs -bool true</td>
+</tr>
+<tr>
+<td>修改通知停留时间</td>
+<td>defaults write com.apple.notificationcenterui bannerTime 时间(单位为秒)</td>
 </tr>
 </tbody>
 </table>
-<p>显示隐藏文件夹|defaults write com.apple.finder AppleShowAllFiles -bool true;killall Finder<br>隐藏隐藏文件夹|defaults write com.apple.finder AppleShowAllFiles -bool false;killall Finder<br>在终端中打开当前目录|open .<br>强制Safari在新建窗口中打开链接|defaults write com.apple.Safari TargetedClicksCreateTabs -bool true<br>修改通知停留时间|defaults write com.apple.notificationcenterui bannerTime 时间(单位为秒)</p>
 
           
         
