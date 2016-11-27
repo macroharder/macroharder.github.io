@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -80,15 +80,33 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="liukun的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="#Android 屏幕密度解惑由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。
+##相关概念
+###DPI
+
+DPI 全称为 Dots Per Inch. Inch的含义是英寸，意思也就是『一英寸内点的个数』。Android 设备采用 DPI 来表示屏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 屏幕密度解惑">
+<meta property="og:url" content="http://yoursite.com/2016/11/27/屏幕密度解惑/index.html">
 <meta property="og:site_name" content="liukun的个人博客">
-<meta property="og:description">
+<meta property="og:description" content="#Android 屏幕密度解惑由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。
+##相关概念
+###DPI
+
+DPI 全称为 Dots Per Inch. Inch的含义是英寸，意思也就是『一英寸内点的个数』。Android 设备采用 DPI 来表示屏">
+<meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/af31a9366de3232f78a9e48904f5b0463875ec25">
+<meta property="og:image" content="http://7xkou8.com1.z0.glb.clouddn.com/miread3.PNG">
+<meta property="og:image" content="http://7xkou8.com1.z0.glb.clouddn.com/huawei.PNG">
+<meta property="og:image" content="https://pic4.zhimg.com/a547a8e829add9333d7edaf79b8e1ab3_b.jpg">
+<meta property="og:updated_time" content="2016-11-27T15:22:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liukun的个人博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Android 屏幕密度解惑">
+<meta name="twitter:description" content="#Android 屏幕密度解惑由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。
+##相关概念
+###DPI
+
+DPI 全称为 Dots Per Inch. Inch的含义是英寸，意思也就是『一英寸内点的个数』。Android 设备采用 DPI 来表示屏">
+<meta name="twitter:image" content="http://img1.tbcdn.cn/L1/461/1/af31a9366de3232f78a9e48904f5b0463875ec25">
 
 
 
@@ -106,7 +124,7 @@
   };
 </script>
 
-  <title> liukun的个人博客 </title>
+  <title> Android 屏幕密度解惑 | liukun的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -206,9 +222,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -228,10 +244,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/11/27/屏幕密度解惑/" itemprop="url">
-                  Android 屏幕密度解惑
-                </a>
+                Android 屏幕密度解惑
               
             
           </h1>
@@ -278,9 +291,7 @@
       
 
       
-        
-          
-            <p>#Android 屏幕密度解惑<br>由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。</p>
+        <p>#Android 屏幕密度解惑<br>由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。</p>
 <p>##相关概念</p>
 <p>###DPI</p>
 <blockquote>
@@ -394,495 +405,57 @@
 <pre><code>context.getResources().getDisplayMetrics().density; 
 </code></pre><p>其实就是 dpi /160 的值。<br>至于结果为什么要加上 0.5f，你猜猜看？</p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/09/Mac实用技巧/" itemprop="url">
-                  Mac实用技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-09T14:06:08+08:00" content="2016-06-09">
-              2016-06-09
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/09/Mac实用技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/Mac实用技巧/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="快捷键篇"><a href="#快捷键篇" class="headerlink" title="快捷键篇"></a>快捷键篇</h2><table>
-<thead>
-<tr>
-<th>作用</th>
-<th>快捷键</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>最小化所有窗口</td>
-<td>command + option + M + H</td>
-</tr>
-<tr>
-<td>不带格式粘贴</td>
-<td>command + option + shift + V</td>
-</tr>
-<tr>
-<td>窗口截图带阴影</td>
-<td>shift + command + 4 + 空格</td>
-</tr>
-<tr>
-<td>切换并前置最小化的窗口</td>
-<td>command + tab 切换到对应的窗口后    command 键不要松，按下 option 键后再一起松</td>
-</tr>
-<tr>
-<td>显示选中文件简介</td>
-<td>command  + I</td>
-</tr>
-<tr>
-<td>输入特殊符号</td>
-<td>control + command + space</td>
-</tr>
-<tr>
-<td>音量轻微调节</td>
-<td>option + shift + F10/F11</td>
-</tr>
-<tr>
-<td>剪切</td>
-<td>command + C   –&gt; command +option + V</td>
-</tr>
-</tbody>
-</table>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/09/Mac实用技巧/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/09/Mac实用技巧/" rel="next" title="Mac实用技巧">
+                <i class="fa fa-chevron-left"></i> Mac实用技巧
+              </a>
+            
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/Android-gradle-tips/" itemprop="url">
-                  Android gradle tips
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T21:40:16+08:00" content="2016-04-13">
-              2016-04-13
-            </time>
-          </span>
-
-          
-
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <blockquote>
-<p>最近有人问到能否根据不同渠道动态修改 <em>strings.xml</em> 中字符串问题，正好整理下 <em>gradle</em> 中几个比较灵活且非常实用的配置。</p>
-</blockquote>
-<h3 id="动态赋值resValue"><a href="#动态赋值resValue" class="headerlink" title="动态赋值resValue"></a>动态赋值resValue</h3><p>假如我们需要根据不同编译类型 <em>(debug/release)</em>或者不同渠道动态给 <code>strings.xml</code> 文件中的「url」赋值。只需要在「buildType」节点中根据不同的类型，或者「productFlavors」中根据不同的渠道加入一下代码：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/13/Android-gradle-tips/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/Android开发中，那些让你相见恨晚的方法、类或接口/" itemprop="url">
-                  Android开发中，那些让你相见恨晚的方法、类或接口
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T09:16:43+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>PS:本文类容来自我在知乎上对<a href="https://www.zhihu.com/question/33636939/answer/57239990?group_id=612750833369153536">Android开发中，有哪些让你觉得相见恨晚的方法、类或接口？</a>这一问题的回答，目前就总结这些，日后若有新的发现，随时补充。欢淫点赞。 </p>
-</blockquote>
-<ul>
-<li><p>getParent().requestDisallowInterceptTouchEvent(true);剥夺父view 对touch 事件的处理权，谁用谁知道。</p>
-</li>
-<li><p>ArgbEvaluator.evaluate(float fraction, Object startValue, Object endValue); 用于根据一个起始颜色值和一个结束颜色值以及一个偏移量生成一个新的颜色，分分钟实现类似于微信底部栏滑动颜色渐变。</p>
-</li>
-<li><p>Canvas中clipRect、clipPath和clipRegion 剪切区域的API。</p>
-</li>
-<li><p>Bitmap.extractAlpha ();返回一个新的Bitmap，capture原始图片的alpha 值。有的时候我们需要动态的修改一个元素的背景图片又不希望使用多张图片的时候，通过这个方法，结合Canvas 和Paint 可以动态的修改一个纯色Bitmap的颜色。</p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/11/Android开发中，那些让你相见恨晚的方法、类或接口/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/10/Android-Studio-advanced-configuration/" itemprop="url">
-                  Android Studio advanced configuration
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-10T21:17:03+08:00" content="2016-04-10">
-              2016-04-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/10/Android-Studio-advanced-configuration/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/10/Android-Studio-advanced-configuration/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>本文主要内容来自 Dmytro Danylyk 在 Medium 的文章<a href="https://medium.com/google-developer-experts/configuring-android-studio-4aa4f54f1153#.cnxns55fh">Configuring Android Studio</a>。在此感谢！虽然使用<em>Android Studio</em> 有一定的时间了，但文中的某几个设置之前还真不知道，且原文在长城外，因此在翻译原文的基础上作了一些补充，若有新的发现会即时更新。当然，原文中个别技巧也谈不上高级，出于对作者的尊重，仍然全部翻译了过来，希望对大家尤其是刚接触 <em>Android Studio</em> 的朋友有一点帮助。</p>
-</blockquote>
-<h3 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h3><p><em>Android Studio</em> 提供了一个非常方便的功能帮助我们<em>导入</em>或者<em>导出</em>设置。因此我们在安装一个新的 <em>Android Studio</em> 的时候通常会导入一个之前的设置。但是，最近发生了一件悲剧的事情-我丢失了我的设置文件(幸灾乐祸点个赞～)。</p>
-<blockquote>
-<p>我的建议：即时的备份你的设置文件到云盘等地方。</p>
-</blockquote>
-<p>当我在配置我的 <em>Android Studio</em> 的时候，下面的一些配置技巧或许对你有一定的帮助。</p>
-<h3 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h3><p>当我首次启动我的 <em>Android Studio</em> 的时候，我想做的第一件事就是希望能看到文件中的行号，我一直很奇怪这个基本的配置为毛不是默认开启的？!<br>对此我只想说四个字：</p>
-<center><img src="http://7xkou8.com1.z0.glb.clouddn.com/zhizhang.jpg" alt=""></center>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/10/Android-Studio-advanced-configuration/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -890,6 +463,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/27/屏幕密度解惑/"
+           data-title="Android 屏幕密度解惑" data-url="http://yoursite.com/2016/11/27/屏幕密度解惑/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -909,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xkou8.com1.z0.glb.clouddn.com/317D2E6B-BDE6-407B-8D7D-60271C6838AB.png"
@@ -964,6 +554,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PX-与-DP-之间的换算公式"><span class="nav-number">1.</span> <span class="nav-text">PX 与 DP 之间的换算公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP-转-PX"><span class="nav-number">2.</span> <span class="nav-text">DP 转 PX</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1061,6 +662,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
