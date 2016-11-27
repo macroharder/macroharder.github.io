@@ -279,8 +279,7 @@
 
       
         
-          
-            <p>由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。</p>
+          <p>由于工作原因，发现很多 Android 初学者对屏幕密度等相关概念以及对应计算方式容易模糊，因此本文对相关知识进行简单介绍。文中只对概念进行阐述，不涉及屏幕适配。因此Android 老鸟不必栖息。</p>
 <h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="DPI"><a href="#DPI" class="headerlink" title="DPI"></a>DPI</h3><blockquote>
 <p>DPI 全称为 Dots Per Inch. Inch的含义是英寸，意思也就是『一英寸内点的个数』。Android 设备采用 DPI 来表示屏幕的『密度』。DPI 原本是印刷行业的概念，意思是一英寸内有多少个墨点。</p>
 </blockquote>
@@ -288,103 +287,11 @@
 <p>原本还有一个概念叫 PPI(Pixels Per Inch) 意思是『每英寸内的像素数』，这是通用的概念。</p>
 </blockquote>
 <p>这两个概念在 Android 中是一样的含义，只不过在 Android 中采用了 DPI 这个不太严谨的概念，要表达的意思是一致的，还是一英寸中像素点的个数。</p>
-<h3 id="寸"><a href="#寸" class="headerlink" title="寸"></a>寸</h3><blockquote>
-<p>我们在买一个手机的时候经常会关心这个手机屏幕有多大，称之为多少寸，比如说 5.0 寸，4.7 寸。这个寸其实指的是屏幕对角线的长度，单位就是英寸(Inch)。也称为『物理尺寸』。1英寸等于 2.54cm。</p>
-</blockquote>
-<h3 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h3><blockquote>
-<p>所谓的分辨率，是指的一个显示设备横纵方向各有多少个像素点。例如我们说一个手机的分辨率为 1280×720 ，指的就是这个手机纵向有 1280 个像素点，横向有720个像素点，整个手机屏幕上一共就有 1280×720个像素点。</p>
-</blockquote>
-<h2 id="如何计算手机屏幕的密度"><a href="#如何计算手机屏幕的密度" class="headerlink" title="如何计算手机屏幕的密度"></a>如何计算手机屏幕的密度</h2><p>由于手机屏幕硬件的差异性，屏幕中同样物理尺寸的一块空间，能包含的像素点的个数可能不一样。</p>
-<p><strong>以两款常见的手机为例：</strong></p>
-<table>
-<thead>
-<tr>
-<th>手机型号</th>
-<th>屏幕尺寸</th>
-<th>分辨率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>红米3s</td>
-<td>5.0寸</td>
-<td>1280*720</td>
-</tr>
-<tr>
-<td>HUAWEI nova</td>
-<td>5.0寸</td>
-<td>1920*1080</td>
-</tr>
-</tbody>
-</table>
-<p>通过上表可以明显发现，哪怕两个物理尺寸一模一样的手机，里面能容纳的像素点的个数都可能不一样。这种情况就可以称之为两个手机的屏幕密度不一样。根据 DPI 的概念。我们可以通过如下方式计算手机的屏幕的 DPI：</p>
-<p><img src="http://img1.tbcdn.cn/L1/461/1/af31a9366de3232f78a9e48904f5b0463875ec25" alt=""></p>
-<p>根据此计算公式可以得出两款手机的屏幕密度分别为：</p>
-<table>
-<thead>
-<tr>
-<th>手机型号</th>
-<th>屏幕尺寸</th>
-<th>分辨率</th>
-<th>屏幕密度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>红米3s</td>
-<td>5.0寸</td>
-<td>1280×720</td>
-<td>294dpi(ppi)</td>
-</tr>
-<tr>
-<td>HUAWEI nova</td>
-<td>5.0寸</td>
-<td>1920×1080</td>
-<td>441dpi(ppi)</td>
-</tr>
-</tbody>
-</table>
-<p>对比厂商提供的参数信息：<br><img src="http://7xkou8.com1.z0.glb.clouddn.com/miread3.PNG" alt=""><br><em>红米3s</em></p>
-<p><img src="http://7xkou8.com1.z0.glb.clouddn.com/huawei.PNG" alt=""><br><em>HUAWEI nova</em></p>
-<p>通过对比我们发现，我们计算的和厂商提供的完全一致，计算公式<strong>妥妥的！</strong></p>
-<h2 id="另外两个概念"><a href="#另外两个概念" class="headerlink" title="另外两个概念"></a>另外两个概念</h2><p>了解了 DPI 的计算方式，我们再来看两个大家很熟悉的概念。</p>
-<h3 id="PX"><a href="#PX" class="headerlink" title="PX"></a>PX</h3><blockquote>
-<p>px 就是像素 pixel 的缩写。1px 代表一个显示设备中的一个像素点。</p>
-</blockquote>
-<h3 id="DP-DIP"><a href="#DP-DIP" class="headerlink" title="DP(DIP)"></a>DP(DIP)</h3><blockquote>
-<p>DP 或者 DIP 叫做（Density-Independent pixel)，或者（Device-Independent Pixel)，中文翻译为『密度独立像素』或者『设备独立像素』，Android 中的特有单位，它的大小是由操作系统根据手机屏幕密度动态渲染出来的，1dp 对应多少 px 在不同的设备上，可能是不一致的。</p>
-</blockquote>
-<p>目前我们确实可以通过公式计算出屏幕密度了，又了解了 px 和 dp 的概念。各种概念，有好事的哥们可能急了，你特么到底要说啥？来，看一个常见的情景：</p>
-<p>在 Android 开发中，我们经常需要设置一个控件的宽高。假设你采用的测试机为红米 3s，你希望一个控件的宽度占用屏幕的一半。于是将其宽度设置为 360px，运行结果在你的手机上没有问题。但是同样的代码，运行在 HUAWEI nova 的手机上，由于 nova 手机横向有 1080 个像素点，360 / 1080 = 0.33 明显只占据了屏幕的三分之一。</p>
-<p>从上面的事例中我们可以发现，在 Android 中通过 px 作为单位设置一个控件的宽高，在不同屏幕密度的手机上必然会出现问题。这也是为什么会存在 dp(dip) 这个单位。这个问题我们先记着，一会儿再回过头来解决它。</p>
-<h3 id="PX-与-DP-之间的换算公式"><a href="#PX-与-DP-之间的换算公式" class="headerlink" title="PX 与 DP 之间的换算公式"></a>PX 与 DP 之间的换算公式</h3><blockquote>
-<p>px = dp * (dpi / 160)<br>dp = px / (dpi / 160)  </p>
-</blockquote>
-<p>上面的 dpi /160 也称之为<strong>density</strong><br>看到这个公式可能有的同学会问了，公式中的 160 是个什么鬼？</p>
-<blockquote>
-<p>在 Android 中，160dpi 的设备下, 1dp ＝ 1px，也就说在160dpi 的设备中写 px 和写 dp 效果一样。至于原因，在Google的官方文档给出过解释，因为第一款 Android 设备（ HTC 的T-Mobile G1）是<strong>属于</strong>(注意，是属于，不是等于)160dpi的。</p>
-</blockquote>
-<p>为什么叫属于呢？如果按照 DPI 的计算公式，T-Mobile G1 应该为 180dpi。那么为什么它又属于 160dpi 呢?</p>
-<p>看图：</p>
-<p><img src="https://pic4.zhimg.com/a547a8e829add9333d7edaf79b8e1ab3_b.jpg" alt=""></p>
-<p>Android 里把主流设备的 dpi 归成了四个档次，120 dpi、160 dpi、240 dpi、320 dpi，可以看出T-Mobile G1的参数属于mdpi区域的，以上就是取160dpi作为基准的原因。</p>
-<p>搞清楚这个计算公式之后，回到之前的问题，既然设置 360 px 有问题，那么换成 dp 作为单位改设置为多少呢？根据公式：</p>
-<p><strong>dp = px / (dpi / 160)<br> 196dp ＝ 360 / (294 / 160)</strong></p>
-<p>在 DPI 为 294 分辨率为 1280×720 的红米手机上将宽度设置为 196dp 没有问题，在 DPI 为 441 分辨率为 1920×1080 的华为手机上有没有问题呢？根据公式:</p>
-<p><strong>px = dp <em> (dpi / 160)<br>540px ＝ 196 </em> (441 / 160)</strong></p>
-<p>540px 正好也占据宽度 1080 的一半。相信现在大家对 Android 屏幕以及控件相关单位的概念已经差不多理解了。</p>
-<h3 id="为什么要使用-DP-作为单位呢"><a href="#为什么要使用-DP-作为单位呢" class="headerlink" title="为什么要使用 DP 作为单位呢?"></a>为什么要使用 DP 作为单位呢?</h3><blockquote>
-<p>以 DP 作为单位，系统会根据不同 DPI 的手机，将 DP 为单位的值转换为合适的 PX 目的就是为了界面中的控件，在不同 DPI 的手机上，<strong>显示效果保持一致</strong>，也就是让人看起来，控件的比例是一样大小的。</p>
-</blockquote>
-<p>BUT！还没有完！</p>
-<h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><p>开发中，布局文件中我们习惯使用 dp 单位，但是Android中绝大多数  java 代码的api中默认是以 px 作为单位（如 setPadding等），如果传入同样的值，在不同的手机上同样可能产生问题，因此我们在很多场景下需要进行 dp 和 px 的互转。</p>
-<h3 id="DP-转-PX"><a href="#DP-转-PX" class="headerlink" title="DP 转 PX"></a>DP 转 PX</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">    * 自动根据手机的 dpi 从 dp 的单位 转成为 px(像素)  </span><br><span class="line">    * <span class="doctag">@param</span> context 上下文</span><br><span class="line">    * <span class="doctag">@param</span> dpValue 需要转换的 dp 值</span><br><span class="line">    */</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dip2px</span><span class="params">(Context context, <span class="keyword">float</span> dpValue)</span> </span>&#123;    </span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;    </span><br><span class="line">       <span class="keyword">return</span> (<span class="keyword">int</span>) (dpValue * scale + <span class="number">0.5f</span>);    </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="PX-转-DP"><a href="#PX-转-DP" class="headerlink" title="PX 转 DP"></a>PX 转 DP</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">    * 自动根据手机的 dpi 从 px(像素) 的单位 转成为 dp </span><br><span class="line">    *  </span><br><span class="line">    * <span class="doctag">@param</span> context 上下文</span><br><span class="line">    * <span class="doctag">@param</span> pxValue 需要转换的 px 值</span><br><span class="line">    * <span class="doctag">@return</span> </span><br><span class="line">    */</span>  </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2dip</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;    </span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;    </span><br><span class="line">       <span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);    </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中的</p>
-<pre><code>context.getResources().getDisplayMetrics().density; 
-</code></pre><p>其实就是 dpi /160 的值。<br>至于结果为什么要加上 0.5f，你猜猜看？</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/27/屏幕密度解惑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
