@@ -279,74 +279,14 @@
 
       
         
-          
-            <p>#中文乱码总结</p>
-<blockquote>
-<p>编码问题是很多初学者在 Web 开发过程中经常会遇到问题，很多同学在记忆的时候容易出现混淆，或是虽然能够机械的记住解决的代码，但是对乱码出现的原因以及解决的原理未作过了解。因此本文对这部分内容作一个简单的总结和解释。</p>
-</blockquote>
-<p>##请求中文乱码<br>HTTP 请求中，最常用的请求方式为 GET 和 POST。请求参数的位置会随着不同的请求方式出现在不同的位置，所以对于中文乱码的处理方式不同。</p>
+          <p>编码问题是很多初学者在 Web 开发过程中经常会遇到问题，很多同学在记忆的时候容易出现混淆，或是虽然能够机械的记住解决的代码，但是对乱码出现的原因以及解决的原理未作过了解。因此本文对这部分内容作一个简单的总结和解释。</p>
+<h2 id="请求中文乱码"><a href="#请求中文乱码" class="headerlink" title="请求中文乱码"></a>请求中文乱码</h2><p>HTTP 请求中，最常用的请求方式为 GET 和 POST。请求参数的位置会随着不同的请求方式出现在不同的位置，所以对于中文乱码的处理方式不同。</p>
 <h3 id="GET-提交中文参数乱码解决"><a href="#GET-提交中文参数乱码解决" class="headerlink" title="GET 提交中文参数乱码解决"></a>GET 提交中文参数乱码解决</h3><p>GET 方式提交参数时，参数是直接出现在 URL 中的，对于 GET 请求，中文参数乱码问题解决方式有3种。</p>
-<p><strong>1.修改 Tomcat 编码。</strong><br>Tomcat 安装路径–&gt; conf –&gt; server.xml –&gt; Connector 标签 –&gt; 增加 URIEncoding 属性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> redirectPort=<span class="string">"8443"</span> URIEncoding=<span class="string">"UTF-8"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>通常不建议使用这种方式，因为一个采用 Tomcat8.0 之前版本服务器的老项目，代码中可能已经处理了 GET请求的乱码问题，采用这种方式反而会导致乱码的出现。Tomcat8 以及以上版本已经将默认编码修改为 UTF-8 因此不用修改。</p>
-</blockquote>
-<p><strong>2. 通过 URLEncoder 和 URLDecoder 进行编解码操作。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String encode = URLEncoder.encode(request.getParameter(<span class="string">"name"</span>),<span class="string">"ISO-8859-1"</span>);</span><br><span class="line">String name = URLDecoder.decode(name,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
-<p>代码解释：</p>
-<blockquote>
-<p>GET 请求的参数是出现在 URL 中的 QueryString 部分的，URL 中如果含有中文等非 ASCII 字符，则浏览器会对它们进行 URLEncode，然后发送给服务器，在通过 request.getParameter(“name”) 取出时又会对该 name 对应的参数进行 URLDecode。通常在进行 URLEncode 的时候采用的编码为 UTF-8，而在 URLDecode 的时候会采用 Tomcat 服务器的默认编码 ISO-8859-1，编码和解码所采用的编码方式不一致，所以出现乱码。既然通过 request.getParameter(“name”) 得到了一个采用 ISO-8859-1 进行 URLDecode 的乱码，那么我们可以对该乱码通过 ISO-8859-1 进行 URLEncode，此时的值就是浏览器最初提交到后台的通过 UTF-8 URLEncode 后的数据。然后我们通过与浏览器一致的 UTF-8 编码对该数据进行解码。两端编码一致，乱码问题就得到了解决。</p>
-</blockquote>
-<p><strong>Talk is cheap, Show you the code.</strong><br>我们通过下面的代码来解释乱码出现到解决的过程，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="comment">// 1，原始中文参数</span></span><br><span class="line">	String parameter = <span class="string">"中文"</span>;</span><br><span class="line">	System.out.println(<span class="string">"原始中文参数："</span>+parameter);</span><br><span class="line">	<span class="comment">// 2，浏览器通过 UTF-8 进行 URLEncode</span></span><br><span class="line">	String browerEncodeParameter = URLEncoder.encode(parameter, <span class="string">"UTF-8"</span>);</span><br><span class="line">	System.out.println(<span class="string">"浏览器通过 UTF-8 进行 URLEncode 后的值:"</span> +browerEncodeParameter);</span><br><span class="line">	<span class="comment">// 3，通过 ISO-8859-1 进行 URLDecode</span></span><br><span class="line">	String serverDecodeParameter = URLDecoder.decode(browerEncodeParameter, <span class="string">"ISO-8859-1"</span>);</span><br><span class="line">	System.out.println(<span class="string">"直接取出时通过 ISO-8859-1 进行 URLDecode 后得到的乱码:"</span>+serverDecodeParameter);</span><br><span class="line">	<span class="comment">// 4，手动通过 ISO-8859-1 对乱码进行 URLEncode </span></span><br><span class="line">	String codeEncodeParameter = URLEncoder.encode(serverDecodeParameter,<span class="string">"ISO-8859-1"</span>);</span><br><span class="line">	System.out.println(<span class="string">"手动对乱码通过 ISO-8859-1 进行 URLEncode 得到的浏览器原始提交的值:"</span>+codeEncodeParameter);</span><br><span class="line">	<span class="comment">// 5，手动通过 UTF-8 对步骤4得到的值进行 URLDecode 后得到正确中文参数</span></span><br><span class="line">	String codeDecodeParameter = URLDecoder.decode(codeEncodeParameter,<span class="string">"UTF-8"</span>);</span><br><span class="line">	System.out.println(<span class="string">"手动通过 UTF-8 进行 URLDecode 后得到的正确中文参数:"</span>+codeDecodeParameter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原始中文参数:  中文</span><br><span class="line">浏览器通过 UTF-<span class="number">8</span> 进行 URLEncode 后的值:  %E4%B8%AD%E6%<span class="number">96</span>%<span class="number">87</span></span><br><span class="line">直接取出时通过 ISO-<span class="number">8859</span>-<span class="number">1</span> 进行 URLDecode 后得到的乱码:  ä¸­æ</span><br><span class="line">手动对乱码通过 ISO-<span class="number">8859</span>-<span class="number">1</span> 进行 URLEncode 得到的浏览器原始提交的值:  %E4%B8%AD%E6%<span class="number">96</span>%<span class="number">87</span></span><br><span class="line">手动通过 UTF-<span class="number">8</span> 进行 URLDecode 后得到的正确中文参数:  中文</span><br></pre></td></tr></table></figure></p>
-<p><strong>3. 通过 String 的构造方法。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="keyword">new</span> String(request.getParameter(<span class="string">"name"</span>).getBytes(<span class="string">"IOS-8859-1"</span>),<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
-<p>代码解释：</p>
-<blockquote>
-<p>无论从浏览器提交时中文参数是什么编码格式，到达服务器时因为 Tomcat 编码方式的原因，采用 ISO-8859-1 的方式给解析成了乱码<br>request.getParameter(“name”) 获取到的就是一个通过 ISO-8859-1 方式解析之后的乱码，那么我们通过 getBytes(“ISO-8859-1”) 将它反解成原有编码的字符数组，相当于打回原形，这是一个正确的字符数组，然后通过 String 的构造方法将这个正确的字符数组转成 UTF-8 编码的字符串。因为代码相对简单，因此通常采用这种方式。</p>
-</blockquote>
-<p>###POST请求中文参数乱码解决</p>
-<p>对于 POST 方式，表单中的参数值对是通过 request body 发送给服务器，此时浏览器会根据网页的 ContentType(“text/html; charset=编码”) 中指定的编码进行对表单中的数据进行编码，然后发给服务器。POST 的参数是在请求体中，直接到达后台，数据在 Servlet 中的 request 中。request 有一个缓冲区，request 的缓冲区采用的是 ISO-8859-1 编码，因为 requeset 是 Tomcat 负责创建的，所以用的是 Tomcat 的编码。解决方式是设置 request 缓冲区编码。在服务器端的程序中我们可以通过 request 对象 的 setCharacterEncoding 方法设置编码，然后通过 request 对象的 getParameter 获得正确的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">String value = requst.getParameter(<span class="string">"name"</span>);</span><br></pre></td></tr></table></figure>
-<p>##响应中文乱码<br>通常情况我们都是通过 HttpServletResponse 对象向页面进行响应，HttpServletResponse 有两种响应方式，一种是 OutputStream 字节流，另一种是 PrintWriter 字符流。是否会出现中文乱码，以及乱码解决方式跟采用的流的类型有关。</p>
-<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><blockquote>
-<p>使用字节流不一定会出现中文乱码，取决于操作系统，工作空间以及浏览器打开页面时采用的编码。如果两端编码一致，则不会出现中文乱码，不一致则出现乱码。</p>
-</blockquote>
-<ul>
-<li>解决方式：</li>
-</ul>
-<ol>
-<li>设置字符数组取出时的编码</li>
-<li>设置浏览器打开时的编码</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.getOutPutStream.write(<span class="string">"中文"</span>.getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/html;charset=UTF-8"</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>总之是设置输出时的字节数组编码和浏览器解析时的编码一致。中文转成字节数组的时候，如果 IDE 工作空间的编码正好和浏览器一致，可以不用设置字符数组取出时的编码，但是为了保险起见，建议还是设置。</p>
-</blockquote>
-<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><blockquote>
-<p>使用字符流一定会出现中文乱码，HttpServletResponse 使用的字符流是有缓冲区的，缓冲区使用的默认编码是 IOS-8859-1,压根儿就不支持中文。 </p>
-</blockquote>
-<ul>
-<li>解决方式：</li>
-</ul>
-<ol>
-<li>设置字符流缓冲区的编码</li>
-<li>设置浏览器打开时的编码</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">response.getWriter().println(<span class="string">"中文"</span>);</span><br></pre></td></tr></table></figure>
-<p>简化写法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">response.getWriter().println(<span class="string">"中文"</span>);</span><br></pre></td></tr></table></figure>
-<p>##文件下载时的中文文件名乱码处理</p>
-<p>文件下载前，文件名一般是以 GET 请求方式的参数直接出现在浏览器的地址栏也就是 URL 中的，所以需要先通过解决 GET 请求中文乱码的方式将中文文件名接收成正常的中文。</p>
-<p>在下载开始时，需要设置文件保存时采用的文件名，不同浏览器因为特性的不同需要分别设置，如 IE 等内核的浏览器要求 Content-Disposition 响应头中的中文文件名需要通过 URLEncoder 进行编码，而火狐浏览器要求 Content-Disposition 响应头中的中文文件名需要通过 Base64 进行编码。所以要通过请求头中的 User-Agent 头信息获取到浏览器类型后分别处理。</p>
-<ul>
-<li>解决方式</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.接收参数，解决 GET 请求参数中文乱码，目的是将中文文件名转成正常中文</span></span><br><span class="line">String filename = <span class="keyword">new</span> String(request.getParameter(<span class="string">"filename"</span>).getBytes(<span class="string">"ISO-8859-1"</span>),<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="comment">// 根据浏览器的类型处理保存的中文文件名的乱码问题:</span></span><br><span class="line">String agent = request.getHeader(<span class="string">"User-Agent"</span>);</span><br><span class="line"><span class="keyword">if</span>(agent.contains(<span class="string">"Firefox"</span>))&#123;</span><br><span class="line">	filename = base64EncodeFileName(filename);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	filename = URLEncoder.encode(filename,<span class="string">"UTF-8"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2.2设置Content-Disposition头</span></span><br><span class="line">response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;filename="</span>+filename);</span><br></pre></td></tr></table></figure>
-<p>通过 Base64 编码中文文件名的方法代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 参数为中文文件名</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">base64EncodeFileName</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">	BASE64Encoder base64Encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"=?UTF-8?B?"</span></span><br><span class="line">				+ <span class="keyword">new</span> String(base64Encoder.encode(fileName</span><br><span class="line">						.getBytes(<span class="string">"UTF-8"</span>))) + <span class="string">"?="</span>;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/08/22/WEB中文乱码总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
